@@ -107,9 +107,9 @@ function deleteItem(itemIndex) {
 var jsCodeForObtainingItemId="this.parentNode.id.replace('item','')";
 function generateItemContent(itemIndex) {
 	var result = '<div id="item'+itemIndex+'" class="item">';
-	result+='<div class="button floatLeft btnToggleEnabled" onclick="javascript:toggleItemEnabled('+jsCodeForObtainingItemId+')">V</div>';
-	result+='<div class="itemContent floatLeft">'+escapeHTML(items[itemIndex])+'</div>';
-	result+='<div class="button floatRight" onclick="javascript:deleteItem('+jsCodeForObtainingItemId+')">delete</div>';
+	result+='<div class="button btnToggleEnabled" onclick="javascript:toggleItemEnabled('+jsCodeForObtainingItemId+')">V</div>';
+	result+='<div class="itemContent">'+escapeHTML(items[itemIndex])+'</div>';
+	result+='<div class="button" onclick="javascript:deleteItem('+jsCodeForObtainingItemId+')">delete</div>';
 	result+='</div>';
 	return result;
 }
@@ -322,11 +322,15 @@ body {
 	overflow: auto;
 }
 
+.item div {
+	display: table-cell;
+}
+
 .itemContent {
 	width: auto;
 	overflow: auto;	
 	height: 14pt;
-	max-width: 60%;
+	width: 100%;
 }
 
 .itemsSectionHeading div.separator, .item div.separator {
