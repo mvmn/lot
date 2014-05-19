@@ -1,4 +1,5 @@
 <html>
+<meta name="viewport" content="width=400">
 <script>
 function getUrlParameters(parameter, staticURL, decode){
 	/*
@@ -107,8 +108,8 @@ var jsCodeForObtainingItemId="this.parentNode.id.replace('item','')";
 function generateItemContent(itemIndex) {
 	var result = '<div id="item'+itemIndex+'" class="item">';
 	result+='<div class="button floatLeft btnToggleEnabled" onclick="javascript:toggleItemEnabled('+jsCodeForObtainingItemId+')">V</div>';
+	result+='<div class="itemContent floatLeft">'+escapeHTML(items[itemIndex])+'</div>';
 	result+='<div class="button floatRight" onclick="javascript:deleteItem('+jsCodeForObtainingItemId+')">delete</div>';
-	result+='<div class="floatLeft itemContent">'+escapeHTML(items[itemIndex])+'</div>';
 	result+='</div>';
 	return result;
 }
@@ -262,7 +263,6 @@ body {
 
 #mainContainer {
 	width: 100%;
-	overflow: auto;
 	background-color: #FFFFFF;
 	padding: 10pt;
     -webkit-box-sizing: border-box;
@@ -273,17 +273,17 @@ body {
 .itemsSection {
 	box-sizing: border-box;
 	width: 100%;
-	overflow: auto;
 	background-color: #EEEEEE;
 	margin-bottom: 10pt;
+	padding-bottom: 10pt;
 }
 
 .itemsSectionContent {
 	box-sizing: border-box;
 	width: 100%;
-	overflow: auto;
 	padding-left: 10pt;
 	padding-right: 10pt;
+	text-align: center;
 }
 
 .itemsSectionHeading {
@@ -305,16 +305,16 @@ body {
 }
 
 .item, .sectionElement { 
-	width: 100%;
-	overflow: auto;
+	width: 100%;	
 	margin-top: 10pt;
 	margin-bottom: 10pt;
-	text-align: center;
 	box-sizing: border-box;
 }
 
 .item {
 	background-color: #BBBBFF;
+	overflow: auto;
+	text-align: left;
 }
 
 .item div, .sectionElement div {
@@ -323,9 +323,10 @@ body {
 }
 
 .itemContent {
-	width: 85%;
-	overflow: auto;
+	width: auto;
+	overflow: auto;	
 	height: 14pt;
+	max-width: 60%;
 }
 
 .itemsSectionHeading div.separator, .item div.separator {
@@ -340,7 +341,7 @@ body {
 	font-size: 32pt;
 	text-align: center;
 	padding: 30pt;
-	overflow: auto;	
+	overflow: auto;
 }
 
 .currentItemButtons {
