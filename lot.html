@@ -120,20 +120,25 @@ function addItem(itemText) {
 		itemText = itemText;
 	}
 	if(itemText) {
-		items.push(itemText);
-		enabledItems.push(new Number(items.length-1).toFixed());
-		var itemsContainer = document.getElementById("allItems");
-		itemsContainer.innerHTML=generateItemContent(items.length-1)+itemsContainer.innerHTML;
-		updateItemsCount();
-		updateUrl();
+		var splits = itemText.split(";;");
+		for(splitIndex in splits) {
+			items.push(splits[splitIndex]);
+			enabledItems.push(new Number(items.length-1).toFixed());
+			var itemsContainer = document.getElementById("allItems");
+			itemsContainer.innerHTML=generateItemContent(items.length-1)+itemsContainer.innerHTML;
+			updateItemsCount();
+			updateUrl();
+		}
 	}
 }
 
 function deleteAllItems() {
 	if(window.confirm("Are you sure you want to delete ALL items?")) {
 		items = [];
+		enabledItems = [];
 		updateItemsCount();		
 		updateUrl();
+		document.getElementById('allItems').innerHTML='';
 		clearItemDisplay();
 	}
 }
